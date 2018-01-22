@@ -47,8 +47,8 @@ from pyspark.mllib.regression import LabeledPoint
 #    The first row is Customer_ID; second row is the Y variable; and the third row onwards are the X Variables
 # ------------------------------------------------------------------------------
  
-transformed_train_df = data_train_rdd.map(lambda row: LabeledPoint(row[1], Vectors.dense(row[2:-1])))
-transformed_test_df = data_test_rdd.map(lambda row: LabeledPoint(row[1], Vectors.dense(row[2:-1])))
+transformed_train_df = data_train_rdd.map(lambda row: LabeledPoint(row[1], Vectors.dense(row[2:])))
+transformed_test_df = data_test_rdd.map(lambda row: LabeledPoint(row[1], Vectors.dense(row[2:])))
  
  
 # ------------------------------------------------------------------------------
@@ -57,7 +57,7 @@ transformed_test_df = data_test_rdd.map(lambda row: LabeledPoint(row[1], Vectors
 #   The first row is the Customer_ID; and the second row onwards are the X Variables
 # ------------------------------------------------------------------------------
  
-transformed_score_df = data_score_rdd.map(lambda row: LabeledPoint(row[0], Vectors.dense(row[1:-1])))
+transformed_score_df = data_score_rdd.map(lambda row: LabeledPoint(row[0], Vectors.dense(row[1:])))
  
  
 # ------------------------------------------------------------------------------
